@@ -23,6 +23,28 @@ def index(request):
 		i=i+1
 	
 	currency_rates=pd.DataFrame({'Currency_Name':abbrs,'curr':currencies,})
+	localtime = time.asctime( time.localtime(time.time()) )
+
+	df= pd.read_excel("dummy.xlsx")
+	# print(df)
+
+	# print("Currencies",currencies)
+	df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
+	df[localtime]=currencies
+	df.to_excel("dummy.xlsx")
+
+	df2 = pd.DataFrame(
+        {
+            localtime:currencies,
+        })
+	
+
+
+	# df[localtime] = df2
+	# df.to_excel("output.xlsx")
+	# df1.to_csv('mydata1.csv')
+	# a = pd.read_csv("mydata1.csv")
+
 	return render(request,'ExchangeRates/index.html',context={'form':currency_rates})
 
 def indextwo(request):
@@ -38,6 +60,14 @@ def indextwo(request):
 		i=i+1
 	
 	currency_rates=pd.DataFrame({'Currency_Name':abbrs,'curr':currencies,})
+	df= pd.read_excel("Book2.xlsx")
+	print(df)
+
+	print("Currencies",currencies)
+	df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
+	df[localtime]=currencies
+	df.to_excel("Book2.xlsx")
+
 	return render(request,'ExchangeRates/indextwo.html',context={'form':currency_rates})
 
 def indexthree(request):
@@ -53,6 +83,14 @@ def indexthree(request):
 		i=i+1
 	
 	currency_rates=pd.DataFrame({'Currency_Name':country,'curr':currencies,})
+	df= pd.read_excel("Book3.xlsx")
+	print(df)
+
+	print("Currencies",currencies)
+	df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
+	df[localtime]=currencies
+	df.to_excel("Book3.xlsx")
+
 	return render(request,'ExchangeRates/indexthree.html',context={'form':currency_rates})
 
 

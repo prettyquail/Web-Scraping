@@ -7,17 +7,24 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Currency',
+            name="Currency",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('country', models.CharField(max_length=5)),
-                ('abbrs', models.CharField(max_length=66)),
-                ('currencies', models.CharField(max_length=55)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("country", models.CharField(max_length=5)),
+                ("abbrs", models.CharField(max_length=66)),
+                ("currencies", models.CharField(max_length=55)),
             ],
         ),
     ]
